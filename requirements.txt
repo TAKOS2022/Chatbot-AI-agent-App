@@ -21,3 +21,4 @@ langchain-openai
 docarray
 jupyter_bokeh
 langchain_chroma
+streamlit

@@ -5,6 +5,7 @@ __pycache__/
 
 # Remove data from my project
 data/chroma
+chat_history.db
 
 # C extensions
 *.so
