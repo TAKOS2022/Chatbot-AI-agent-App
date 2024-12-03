@@ -26,12 +26,12 @@ from langchain_community.document_loaders import PyPDFLoader
 openai.api_key  = os.environ['OPENAI_API_KEY']
 
 st.set_page_config(
-    page_title="Travel Advice for Cameroon ",
+    page_title="Insurance Chatbot App ",
     page_icon="🇨🇲",
     layout="wide",
     initial_sidebar_state="expanded"
 )
-st.header(' Welcome to VisitCameroon 🇨🇲!!')
+
 
 loader = PyPDFLoader('data/police_assurance.pdf')
 pages = loader.load()
@@ -90,15 +90,13 @@ if 'page' not in st.session_state:
 
 # Home Page
 if page == "Home":
-    st.title("Welcome to Travel Advice for Cameroon")
+    st.title("Welcome to home insurance informations")
     st.write("Use the buttons on the left to navigate to different pages.")
-    # st.image('reunif.png', caption='Monument de la réunification')
+
 
 if page == "AI Assistant":
-    st.title("AI assistant")
-    st.write("This is the page for the LLM bot, your travel assistant in Cameroon with Internet access. What are you planning for your next trip?")
-    # image = Image.open('reunif.png')
-    # st.image(image, caption='Monument de la réunification',)
+    st.title("Cars Insurance Chatbot")
+    st.write("This is the page for the LLM bot, your insurance assistant. What do you want to know about your insurance ?")
 
     #
     # Build prompt
@@ -116,7 +114,7 @@ if page == "AI Assistant":
                                         return_source_documents=True,
                                         chain_type_kwargs={"prompt": QA_CHAIN_PROMPT})
     #
-
+    result = qa_chain({"query": 'Hello !'})
     question = st.text_input(
         "Votre question :",
         placeholder="Ask me anything!"
